@@ -3,11 +3,13 @@ wordpress:
   links:
     - wordpress_db:mysql
   volumes:
-    - ~/wordpress/wp_html:/var/www/html
+    - ./wordpress_data/wp_html:/var/www/html
   ports:
     - 8080:80
 wordpress_db:
   image: mariadb
+  volumes:
+    - ./mysql_data:/var/lib/mysql
   environment:
     MYSQL_ROOT_PASSWORD: Abcd1234
 phpmyadmin:
